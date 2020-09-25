@@ -615,7 +615,7 @@ class AutoSklearnEstimator(BaseEstimator):
         raise NotImplementedError()
 
     def get_configuration_space(self, X, y):
-        self._automl = self.build_automl(
+        automl = self.build_automl(
             seed=0,
             shared_mode=False,
             ensemble_size=self.ensemble_size,
@@ -624,7 +624,7 @@ class AutoSklearnEstimator(BaseEstimator):
             ),
             tmp_folder=self.tmp_folder,
             output_folder=self.output_folder, )
-        return self._automl.fit(X, y, only_return_configuration_space=True)
+        return automl.fit(X, y, only_return_configuration_space=True)
 
 
 class AutoSklearnClassifier(AutoSklearnEstimator):
